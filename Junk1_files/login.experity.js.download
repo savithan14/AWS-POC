@@ -1,0 +1,27 @@
+﻿var hasServerSideValidationErrors = function () {
+    return !$('#lblErrorMessage:empty').length;
+}
+
+var toggleValidationErrorStyle = function () {
+    if (hasServerSideValidationErrors()) {
+        $('#BadPass').addClass('login-form__alert')
+    }
+};
+
+var overrideValidatorUpdateDisplay = function () {
+    var original = window.ValidatorUpdateDisplay;
+    window.ValidatorUpdateDisplay = function (val) {
+        original(val);
+
+        if (val.isvalid && !hasServerSideValidationErrors()) {
+            $('#BadPass').removeClass('login-form__alert')
+        } else {
+            $('#BadPass').addClass('login-form__alert')
+        }
+    }
+}
+
+$(function () {
+    overrideValidatorUpdateDisplay();
+    toggleValidationErrorStyle();
+});

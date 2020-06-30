@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://devpvpm.practicevelocity.com/20_4/loginpage.aspx?ReturnUrl=%2f20_4%2fDenialsManagement.aspx -->
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PVM &gt; Login</title>
+    <link rel="icon" href="https://devpvpm.practicevelocity.com/20_4/Images/ExperityLogin/icon.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+
+    
+<!-- TOPPER.ASCX -->
+<link rel="stylesheet" type="text/css" href="./Junk1_files/style.css">
+<link rel="stylesheet" type="text/css" href="./Junk1_files/TopBar.css">
+<script type="text/javascript" src="./Junk1_files/TopBar.js.download"></script>
+<script type="text/javascript" src="./Junk1_files/Validate.js.download"></script>
+<!-- END TOPPER.ASCX -->
+
+    
+
+    <script src="./Junk1_files/jquery-2.1.4.min.js.download" type="text/javascript"></script>
+    <script src="./Junk1_files/jquery.validate.min.js.download" type="text/javascript"></script>
+    <script src="./Junk1_files/modernizr-2.8.3.js.download"></script>
+
+    <link rel="stylesheet" href="./Junk1_files/bootstrap.min.css">
+    <script src="./Junk1_files/bootstrap.min.js.download"></script>
+    <script src="./Junk1_files/login.experity.js.download"></script>
+
+    <!-- Google Font Open Sans -->
+    <link href="./Junk1_files/css" rel="stylesheet">
+    <link href="./Junk1_files/css(1)" rel="stylesheet">
+
+    <link href="./Junk1_files/site.css" rel="stylesheet">
+    <link id="pvmBaseCss" rel="stylesheet" href="./Junk1_files/pvmBase.css">
+    <link rel="stylesheet" href="./Junk1_files/login.experity.css">
+    <script>
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        if (self !== top) { top.location.replace(location); }
+        $(function () {
+            $("input:visible:first").focus();
+        });
+    </script>
+</head>
+
+<body class="login-page">
+    <form name="ctl00" method="post" action="https://devpvpm.practicevelocity.com/20_4/loginpage.aspx?ReturnUrl=%2f20_4%2fDenialsManagement.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="ctl00" autocomplete="off" class="login-form">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="T3Q5RC3OHz0oOQujm9J/IPrBQxelhhq69EyYSFWQW1t2OHYjX7BZDC8PmMAG4Ew5">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./Junk1_files/WebResource.axd" type="text/javascript"></script>
+
+<script type="text/javascript">allowOverlap = false;</script>
+<script src="./Junk1_files/WebResource(1).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E9945AB1">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="+hFJfQqL632Boz7Mm+Yn90sLJdONYaTGZaX+3fispMnW/gHhO1tbfSLdJbgJdLH0cx3mA7ma4ALNSLLM37JSwsnrBf3d5jHbbHA4LdYRo1mrJR61nRjN6KgWFTn9D/rmKdGXuOggELU=">
+</div>
+        <header class="login-form__header">
+            <img src="./Junk1_files/experity-white.png" class="login-form__image" alt="Experity">
+            <img src="./Junk1_files/practice-management.png" class="login-form__image" alt="Practice Management">
+            
+                <div class="login-form__ribbon ribbonDEV">
+                    DEV
+                </div>
+            
+        </header>
+        <div class="login-form__fields">
+            <div id="BadPass" class="error-message">
+                <span id="rfvLogin" style="display:none;">User Name is required. </span>
+                <span id="lblErrorMessage"></span>
+            </div>
+            <label class="login-fields__label">User Name</label>
+            <input name="txtLogin" type="text" id="txtLogin" tabindex="1" class="form-control login-fields__control">
+
+            <label class="login-fields__label">Password</label>
+            <input name="txtPassword" type="password" id="txtPassword" tabindex="2" class="form-control login-fields__control">
+            <div class="login-fields__actions">
+                 <a href="https://devservices.practicevelocity.com/pwdreset" id="hrefPasswordReset" class="login-fields__forgot-password-link" target="_blank">Forgot Password</a>
+                 <input type="submit" name="btnSubmit" value="Login" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnSubmit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnSubmit" tabindex="3" class="Button-Login btn btn-md btn-primary">
+            </div>
+        </div>
+        <footer class="login-form__footer">
+            Server: D2-WEBA,
+            Version: 20.4.3980.611
+        </footer>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("rfvLogin"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var rfvLogin = document.all ? document.all["rfvLogin"] : document.getElementById("rfvLogin");
+rfvLogin.controltovalidate = "txtLogin";
+rfvLogin.errormessage = "User Name is required. ";
+rfvLogin.display = "Dynamic";
+rfvLogin.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+rfvLogin.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+    <div class="login-page__advertisement">
+        <div id="NoticeContainer" class="container"></div>
+
+    </div>
+
+
+
+</body></html>

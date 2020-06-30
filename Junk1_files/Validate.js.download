@@ -1,0 +1,1091 @@
+﻿//************************************************************************************************
+//  Global variables
+//************************************************************************************************
+
+var gstrErrMsg = "";
+
+// source PageHelpers\Common\ValidationRegex.cs
+var RexZipCode = {
+    "USA": "^\\d{5}(-\\d{4})?$", // Matches standard 5 digit US Zip Codes, or the US ZIP + 4 Standard.
+    "CANADA": "^[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ] ?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]$", // source http://stackoverflow.com/questions/1146202/canadian-postal-code-validation#1146231
+    "ARGENTINA": "^\\d{4}$",
+    "AUSTRALIA": "^\\d{4}$",
+    "GERMANY": "^\\d{5}$",
+    "FRANCE": "^\\d{5}$",
+    "MEXICO": "^\\d{5}$",
+    "ENGLAND": "^([A-PR-UWYZ]([A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y])?|[0-9]([0-9]|[A-HJKPSTUW])?) ?[0-9][ABD-HJLNP-UW-Z]{2})$", // source http://stackoverflow.com/questions/164979/uk-postcode-regex-comprehensive#33610889
+    "UK": "^([A-PR-UWYZ]([A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y])?|[0-9]([0-9]|[A-HJKPSTUW])?) ?[0-9][ABD-HJLNP-UW-Z]{2})$",  // Same as England above
+    "BRAZIL": "^\\d{5}(-\\d{3})?$"
+};
+
+function getRexZipCode(countryVal) {
+    return RexZipCode[countryVal.toUpperCase()];
+}
+
+// This expression matches a hyphen separated US phone number, of the form ANN-NNN-NNNN,
+// where A is between 2 and 9 and N is between 0 and 9.
+var RexPhoneUS = "^[2-9]\\d{2}-\\d{3}-\\d{4}$";
+
+// Email validator that adheres directly to the specification for email address naming.
+// It allows for everything from ipaddress and country-code domains, to very rare characters
+// in the username.
+var RexEmailAddress = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+
+// This expression matches a 9 digit Social Security Number in the form 999-99-9999.
+var RexSSN = "^000-00-0000$|^(?!(000|666|9))\\d{3}-(?!00)\\d{2}-(?!0000)\\d{4}$"; // "^\\d{3}-\\d{2}-\\d{4}$";
+
+var RexDecimalAmount = "^([0-9]*|\\d*\\.\\d{1}?\\d*)$";
+
+var InvalidTextSaveMessage = 'There are invalid characters in a text field which could potentially produce an error.  Do you still wish to save?';
+
+//************************************************************************************************
+//  Prototype functions
+//************************************************************************************************
+String.prototype.trim = function () 
+{
+    return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+};
+
+Date.prototype.formatAsGregorian = function () 
+{
+    var month = this.getMonth() + 1;
+    month = ((month < 10) ? "0" : "") + month;
+
+    var day = this.getDate();
+    day = ((day < 10) ? "0" : "") + day;
+
+    return month + "/" + day + "/" + this.getFullYear();
+};
+
+Date.prototype.ageLastBirthday = function (dob) 
+{
+    var cy = this.getFullYear();
+    var by = dob.getFullYear();
+    var db = new Date(dob);
+    db.setFullYear(cy);
+    var adj = (this - db < 0) ? 1 : 0;
+    return cy - by - adj;
+}
+
+//************************************************************************************************
+//************************************************************************************************
+//************************************************************************************************
+//function SendXMLforSearch(formID, InputXMLName, SearchFieldName, FieldName) 
+//{
+//    formID(InputXMLName).value = xmldso.xml;
+//    formID(SearchFieldName).value = FieldName;
+//    formID.submit();
+//}
+
+//************************************************************************************************
+function IsValidXML(form, strSchema) 
+{
+    var strXML = xmldso.xml.toString();
+    gstrErrMsg = "";
+    var isValidXML = false;
+    var intPosition = strXML.indexOf(">");
+    var strTemp = strXML.substr(0, intPosition) + " xmlns=\"x-schema:" + strSchema + "\"" + strXML.substr(intPosition);
+
+    xmlValidate.async = false;
+    xmlValidate.validateOnParse = false;
+
+    if (!xmlValidate.loadXML(strTemp)) {
+        alert("LoadXML error : " + xmlValidate.parseError.Reason + " Error on line : " + xmlValidate.parseError.Line);
+    }
+    else {
+        isValidXML = ValidateXMLData(xmlValidate);
+    }
+
+    return isValidXML;
+}
+
+//************************************************************************************************
+function SendXML(form, strSchema)
+{
+    if (IsValidXML(form, strSchema))
+    {
+        var objNewXML = document.getElementById("NewXML");
+        objNewXML.value = xmldso.xml;
+        form.submit();
+    }
+    else 
+    {
+        DisplayMsg();
+    }
+}
+
+
+
+//************************************************************************************************
+function ReturnNewXML(formID) 
+{
+    var objNewXML = document.getElementById("NewXML");
+    objNewXML.value = xmldso.xml;
+    formID.submit();
+}
+
+//************************************************************************************************
+function ReturnNewXMLNoSubmit(formID) 
+{
+
+        var objNewXML = document.getElementById("NewXML");
+        objNewXML.value = xmldso.xml;
+    
+}
+
+//************************************************************************************************
+function ValidateXMLData(objXMLDoc) 
+{
+    return ValidateNode(objXMLDoc.documentElement);
+}
+
+//************************************************************************************************
+function ValidateNode(objNode) 
+{
+    var objChildNode;
+    var objAttributes;
+    var objChildNodes;
+    var intIndex;
+    var blnStatus = true;
+
+    //check for attributes;
+    objAttributes = objNode.attributes;
+    if (objAttributes == null) 
+    {
+        return true;
+    }
+
+    if (objAttributes.length > 0) 
+    {
+        objChildNode = objAttributes.nextNode;
+        while (objChildNode != null) 
+        {
+            blnStatus = blnStatus && ValidateLeafNode(objChildNode);
+            objChildNode = objAttributes.nextNode;
+        }
+    }
+
+    //check if(there's any child nodes;
+    if (objNode.hasChildNodes && objNode.dataType == null) 
+    {
+        objChildNodes = objNode.childNodes;
+        objChildNode = objChildNodes.nextNode;
+        //loop through all child nodes && recursively validate nodes;
+        while (objChildNode != null) 
+        {
+            blnStatus = blnStatus && ValidateNode(objChildNode);
+            objChildNode = objChildNodes.nextNode;
+        }
+    }
+    else 
+    {
+        //found a leaf node;
+        blnStatus = blnStatus && ValidateLeafNode(objNode);
+    }
+
+    return blnStatus;
+}
+
+//************************************************************************************************
+function ValidateLeafNode(objNode) 
+{
+    var strNodeValue;
+    var strNodeDataType;
+    var objDefinitionNode;
+    var objDescriptionNode;
+    var intIndex;
+    var strMinValue;
+    var strMaxValue;
+    var strDataName;
+    var blnRequired;
+    var intMaxLength;
+    var blnStatus;
+    var strFormattedValue;
+
+    //check if the node is a meaningful node, not an end node containing only the data of an element
+    if (objNode.definition == null || objNode.dataType == null) 
+    {
+        return true;
+    }
+
+    //get data value
+    //for an element, the value of the node is stored in its first child node
+    if (objNode.nodeValue == null) 
+    {
+        strNodeValue = (objNode.firstChild == null) ? "" : objNode.firstChild.nodeValue;
+    }
+    else 
+    {
+        //for an attribute, the value of the node is stored directly
+        strNodeValue = objNode.nodeValue;
+    }
+
+    //get data Type;
+    strNodeDataType = objNode.dataType;
+
+    intMaxLength = 0;
+    //check the description for min, max, required and string length if string
+    //get the description tag
+    objDefinitionNode = objNode.definition;
+    if (objDefinitionNode.hasChildNodes) 
+    {
+        if ((objDefinitionNode.childNodes.item(0).nodeName).toLowerCase() == "description") 
+        {
+            //get the definition node;
+            objDescriptionNode = objDefinitionNode.childNodes.item(0);
+
+            //step through all the children nodes
+            for (intIndex = 0; intIndex <= objDescriptionNode.childNodes.length - 1; intIndex++) 
+            {
+                switch ((objDescriptionNode.childNodes.item(intIndex).nodeName).toLowerCase()) 
+                {
+                    case "required":
+                        //will be interpreted is false is node empty;
+                        blnRequired = (objDescriptionNode.childNodes.item(intIndex).nodeTypedValue).trim().toLowerCase() == "true";
+                        break;
+                    case "minvalue":
+                        strMinValue = objDescriptionNode.childNodes.item(intIndex).nodeTypedValue;
+                        break;
+                    case "maxvalue":
+                        strMaxValue = objDescriptionNode.childNodes.item(intIndex).nodeTypedValue;
+                        break;
+                    case "maxlength":
+                        //will be interpreted as 0 if(the node is empty;
+                        intMaxLength = parseInt(objDescriptionNode.childNodes.item(intIndex).nodeTypedValue);
+                        if (isNaN(intMaxLength)) 
+                        {
+                            intMaxLength = 0;
+                        }
+                        break;
+                    case "dataname": //used for displaying error messages
+                        strDataName = objDescriptionNode.childNodes.item(intIndex).nodeTypedValue;
+                        break;
+                    case "userdttype": //user defined data type;
+                        strNodeDataType = objDescriptionNode.childNodes.item(intIndex).nodeTypedValue;
+                        break;
+                     default:
+                        break;
+                }
+            }
+        }
+    }
+
+    //alert(objNode.nodeName + "=" + strNodeValue + " with type=" + strNodeDataType);
+    return ValidateData(strNodeValue, strNodeDataType, strMinValue, strMaxValue, blnRequired, intMaxLength, strDataName);
+}
+
+//************************************************************************************************
+function ValidateData(strData, strDataType, strMinValue, strMaxValue, blnRequired, intMaxLength, strDataName) 
+{
+    var strFormattedValue;
+    var blnStatus;
+
+    //if the data is required but empty, then invalid
+    if (strData.length == 0) 
+    {
+        if (blnRequired) 
+        {
+            AppendMsg(strDataName + " is required.");
+            return false;
+        }
+        else //if the data is not required and empty, then no need to validate && valid;
+        {
+            return true;
+        }
+    }
+
+    blnStatus = true;
+
+    switch (strDataType.toLowerCase()) 
+    {
+        case "bin.base64":
+            // MIME-style Base64 encoded binary BLOB. 
+            break;
+        case "bin.hex":
+            // Hexadecimal digits representing octets.
+            break;
+        case "boolean":
+            // 0 || 1, where 0 == "false" && 1 =="true".        
+            if (!(strData == "0" || strData == "1" || strData.toLowerCase() == "false" || strData.toLowerCase() == "true")) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " is invalid.");
+            }
+            break;
+        case "char":
+            // String, one character long.
+            if (strData.length == 1) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " must be one character long.");
+            }
+            break;
+        case "string":
+            //string, any length
+            if (intMaxLength > 0 && strData.length > intMaxLength) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " cannot exceed " + intMaxLength + " characters.");
+            }
+            break;
+        case "date":
+            // Date in a subset ISO 8601 format, without the time data. For example: "1994-11-05".
+            strFormattedValue = IsValidDate(strData, strMinValue, strMaxValue, strDataName);
+            blnStatus = (strFormattedValue != null);
+            break;
+        case "fixed.14.4":
+            // Same as "number" but no more than 14 digits to the left of the decimal point, and no more than 4 to the right.
+            if (isNaN(strData)) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " is invalid.");
+            }
+            else {
+                blnStatus = IsValueInRange(strData, strMinValue, strMaxValue);
+                if (!blnStatus) 
+                {
+                    AppendMsg(strDataName + " is out of range.");
+                }
+            }
+            break;
+        case "float":
+            // Real number, with no limit on digits; can potentially have a leading sign, fractional digits, and optionally an exponent.
+            // Punctuation as in U.S. English. Values range from 1.7976931348623157E+308 to 2.2250738585072014E-308.
+            if (isNaN(strData)) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " is invalid.");
+            }
+            else 
+            {
+                blnStatus = IsValueInRange(strData, strMinValue, strMaxValue);
+                if (!blnStatus) 
+                {
+                    AppendMsg(strDataName + " is out of range.");
+                }
+            }
+            break;
+        case "int":
+            // Number, with optional sign, no fractions, and no exponent.
+            if (isNaN(strData) || strData.indexOf(".") == 0) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " is invalid.");
+            }
+            else 
+            {
+                blnStatus = IsValueInRange(strData, strMinValue, strMaxValue);
+                if (!blnStatus) 
+                {
+                    AppendMsg(strDataName + " is out of range.");
+                }
+            }
+            break;
+        case "number":
+            // Number, with no limit on digits; can potentially have a leading sign, fractional digits, and optionally an exponent.
+            // Punctuation as in U.S. English. (Values have same range as most significant number, R8, 1.7976931348623157E+308 to 2.2250738585072014E-308.)
+            if (isNaN(strData)) 
+            {
+                blnStatus = false;
+                AppendMsg(strDataName + " is invalid.");
+            }
+            else 
+            {
+                blnStatus = IsValueInRange(strData, strMinValue, strMaxValue);
+                if (!blnStatus) 
+                {
+                    AppendMsg(strDataName + " is out of range.");
+                }
+            }
+            break;
+        case "time":
+            // Time in a subset ISO 8601 format, with no date && no time zone. For example: "08:15: 27".
+            break;
+        case "i1":
+            // Integer represented in one byte. A number, with optional sign, no fractions, no exponent. For example: "1, 127, -128".
+            break;
+        case "i2":
+            // Integer represented in one word. A number, with optional sign, no fractions, no exponent. For example: "1, 703, -32768".
+            break;
+        case "i4":
+            // Integer represented in four bytes. A number, with optional sign, no fractions, no exponent. For example: "1, 703, -32768, 148343, -1000000000".
+            break;
+        case "r4":
+            // Real number, with seven digit precision; can potentially have a leading sign, fractional digits, and optionally an exponent. Punctuation as in U.S. English. Values range from 3.40282347E+38F to 1.17549435E-38F."
+            break;
+        case "r8":
+            // Real number, with 15 digit precision; can potentially have a leading sign, fractional digits, and optionally an exponent. Punctuation as in U.S. English. Values range from 1.7976931348623157E+308 to 2.2250738585072014E-308."
+            break;
+        case "ui1":
+            // Unsigned integer. A number, unsigned, no fractions, no exponent. For example: "1, 255".
+            break;
+        case "ui2":
+            // Unsigned integer, two bytes. A number, unsigned, no fractions, no exponent. For example: "1, 255, 65535".
+            break;
+        case "ui4":
+            // Unsigned integer, four bytes. A number, unsigned, no fractions, no exponent. For example: "1, 703, 3000000000".
+            break;
+        case "uri":
+            // Universal Resource Identifier (URI). For example, "urn:schemas-microsoft-com Office9".
+            break;
+        case "uuid":
+            // Hexadecimal digits representing octets, optional embedded hyphens that are ignored. For example: "333C7BC4-460F-11D0-BC04-0080C7055A83".
+            break;
+        //*********************** User Defined Data Type *******************************; 
+        case "phone":
+            // xxx-xxx-xxxx excluding leading 0 and 1
+            strFormattedValue = IsValidPhone(strData, strDataName);
+            blnStatus = (strFormattedValue != null);
+            break;
+        case "ssn":
+            //xxx-xx-xxxx
+            strFormattedValue = IsValidSSN(strData, strDataName);
+            blnStatus = (strFormattedValue != null);
+            break;
+        case "city":
+            //all alphabet no number
+            blnStatus = IsValidCity(strData, strDataName);
+            break;
+        case "zip":
+            //xxxxx-xxxx
+            blnStatus = IsValidZip(strData, strDataName);
+            break;
+        case "email":
+            //xx.xx@xxx.xxx
+            blnStatus = IsValidEmail(strData, strDataName);
+            break;
+        case "past":
+            //Date in a subset ISO 8601 format, without the time data.
+            strFormattedValue = IsValidPastDate(strData, strMinValue, strMaxValue, strDataName);
+            blnStatus = (strFormattedValue != null);
+            break;
+        case "name":
+            //all alphabet no number, can have "'", ".", "-"
+            blnStatus = IsValidName(strData, strDataName);
+            break;
+        default:
+            break;
+    }
+
+    return blnStatus;
+}
+
+//************************************************************************************************
+//************************************************************************************************
+//************************************************************************************************
+function IsValidPastDate(strDate, strMinDate, strMaxDate, strDataName)
+{
+    var pastDate = IsValidDate(strDate, strMinDate, strMaxDate, strDataName);
+    if(pastDate != null)
+    {
+        objDate = GetDateObject(pastDate);
+        if(objDate > new Date())
+        {
+            AppendMsg (strDataName + " must be today or prior to today.");
+            pastDate = null;
+        }
+    }
+    return pastDate;
+}
+
+//************************************************************************************************
+function IsValidDOB(strDate, strDataName)
+{
+    var now = new Date();
+    return IsValidPastDate(strDate, "01/01/1900", now.formatAsGregorian(), strDataName);
+}
+
+//************************************************************************************************
+function IsDate(txtDate) 
+{
+    var objDate = GetDateObject(txtDate);
+    return (objDate != null);
+}
+
+//************************************************************************************************
+function GetDateObject(txtDate) 
+{
+    var objDate;  // date object initialized from the txtDate string
+    var mSeconds; // milliseconds from txtDate
+
+    txtDate = IsValidDateFormat(txtDate);
+    if (txtDate == null) 
+    {
+        return null;
+    }
+
+    // extract day, month and year from the txtDate string
+    // expected format is mm/dd/yyyy
+    // subtraction will cast variables to integer implicitly
+    var day = txtDate.substring(3, 5) - 0;
+    var month = txtDate.substring(0, 2) - 1; // because months in JS start with 0
+    var year = txtDate.substring(6, 10) - 0;
+
+    // test year range
+    if (year < 999 || year > 3000) 
+    {
+        return null;
+    }
+
+    // convert txtDate to the milliseconds
+    mSeconds = (new Date(year, month, day)).getTime();
+
+    // initialize Date() object from calculated milliseconds
+    objDate = new Date();
+    objDate.setTime(mSeconds);
+
+    // compare input parameter date and created Date() object
+    // if difference exists then date isn't valid
+    if (objDate.getFullYear() != year) 
+    {
+        return null; 
+    }
+    if (objDate.getMonth() != month) 
+    {
+        return null;
+    }
+    if (objDate.getDate() != day) 
+    {
+        return null;
+    }
+
+    // otherwise return date
+    return objDate;
+}
+
+//************************************************************************************************
+function IsValidDateFormat(strDate) 
+{
+    // BUG: See pvJS.formatDateCore
+    var pos1, pos2, month, day;
+    var tempDate = null;
+    var pat6digits = new RegExp("^\\d{6}$");
+    var pat8digits = new RegExp("^\\d{8}$");
+    var patMM_DD_YY = new RegExp("^\\d{1,2}[ \/\-]\\d{1,2}\[ \/\-]\\d{2}$");
+    var patMM_DD_YYYY = new RegExp("^\\d{1,2}[ \/\-]\\d{1,2}\[ \/\-]\\d{4}$");
+
+    if (patMM_DD_YYYY.test(strDate)) 
+    {
+        strDate = strDate.replace(/[ -]/g, "/");
+        pos1 = strDate.indexOf("/");
+        pos2 = strDate.lastIndexOf("/");
+        month = (pos1 == 2) ? strDate.substring(0, pos1) : "0" + strDate.substring(0, pos1);
+        day = (pos2 - pos1 > 2) ? strDate.substring(pos1 + 1, pos2) : "0" + strDate.substring(pos1 + 1, pos2);
+        tempDate = month + "/" + day + "/" + strDate.substr(pos2 + 1, 4);
+    }
+    else if (patMM_DD_YY.test(strDate)) 
+    {
+        strDate = strDate.replace(/[ -]/g, "/");
+        pos1 = strDate.indexOf("/");
+        pos2 = strDate.lastIndexOf("/");
+        month = (pos1 == 2) ? strDate.substring(0, pos1) : "0" + strDate.substring(0, pos1);
+        day = (pos2 - pos1 > 2) ? strDate.substring(pos1 + 1, pos2) : "0" + strDate.substring(pos1 + 1, pos2);
+        tempDate = month + "/" + day + "/" + GetCentury(strDate.substr(pos2 + 1, 2));
+    }
+    else if (pat6digits.test(strDate)) 
+    {
+        tempDate = strDate.substr(0, 2) + "/" + strDate.substr(2, 2) + "/" + GetCentury(strDate.substr(4, 2));
+    }
+    else if (pat8digits.test(strDate)) 
+    {
+        tempDate = (strDate.substr(0, 2) > 12)
+            ? strDate.substr(4, 2) + "/" + strDate.substr(6, 2) + "/" + strDate.substr(0, 4)
+            : strDate.substr(0, 2) + "/" + strDate.substr(2, 2) + "/" + strDate.substr(4, 4);
+    }
+
+    return tempDate;
+}
+
+//************************************************************************************************
+function GetCentury(strYear) 
+{
+    var year = parseInt(strYear);
+    var curYear = new Date().getFullYear();
+    var curCentury = parseInt(curYear / 100);
+
+    return (year > (curYear % 100) + 2) ? (curCentury - 1).toString() + year.toPrecision(2) : curCentury.toString() + zeroPad(year,2);
+}
+
+
+function zeroPad(num, places) {
+    var zero = places - num.toString().length + 1;
+    return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+//************************************************************************************************
+function IsValidDate(strDate, strMinDate, strMaxDate, strDataName) 
+{
+    var objDate = GetDateObject(strDate);
+    if (objDate == null) 
+    {
+        AppendMsg(strDataName + " is an invalid date.");
+        return null;
+    }
+
+    if (strMinDate != null && strMinDate.length > 0) 
+    {
+        var objMinDate = GetDateObject(strMinDate); 
+        if (objMinDate != null && objMinDate > objDate) 
+        {
+            AppendMsg(strDataName + " must be greater than or equal to " + strMinDate + ".");
+            return null;
+        } 
+    }
+
+    if (strMaxDate != null && strMaxDate.length > 0) 
+    {
+        var objMaxDate = GetDateObject(strMaxDate);
+        if (objMaxDate != null && objMaxDate < objDate) 
+        {
+            AppendMsg(strDataName + " must be less than or equal to " + strMaxDate + ".");
+            return null;
+        }
+    }
+
+    return objDate.formatAsGregorian();
+}
+
+//************************************************************************************************
+function IsValidName(strText, strDataName) 
+{
+    // First character must be a - z or A - Z.
+    // Each subsequent character must be a uppercase letter, lowercase letter, space, comma, single quote, dash, or period.
+    var strPattern = /^[a-zA-Z][a-zA-Z\'\.\,\-\ ]*$/;
+    var strMessage = strDataName + " is not valid.";
+
+    return IsValidPattern(strText, strPattern, strMessage);
+}
+
+//************************************************************************************************
+
+function IsValidFullName(strText, strDataName) 
+{
+    var isValid = IsValidName(strText, strDataName);
+    if (isValid) 
+    {
+        isValid = (strText.indexOf(",") > 0);
+        if (!isValid) 
+        {
+            AppendMsg(strDataName + " should be separated by comma like LastName, FirstName.");
+        }
+    }
+    return isValid;
+}
+
+//************************************************************************************************
+function IsValidCompanyName(strText, strDataName) 
+{
+    // First character must be a - z or A - Z or 0-9.
+    // Each subsequent character must be a uppercase letter, lowercase letter, number, space, comma, single quote, plus, dash, or period.
+    var strPattern = "^[a-zA-Z0-9][a-zA-Z0-9 ,'+-\.]*$";
+    var strMessage = strDataName + " is not valid.";
+
+    return IsValidPattern(strText, strPattern, strMessage);
+}
+//************************************************************************************************
+function IsValidCity(strText, strDataName) 
+{
+    // Each character must be a uppercase letter, lowercase letter, space, dash, or period.
+    var strPattern = "^[a-zA-Z -\.]*$";
+    var strMessage = strDataName + " is not valid.";
+
+    return IsValidPattern(strText, strPattern, strMessage);
+}
+
+//************************************************************************************************
+function IsValidSSN(strSSN, strDataName) 
+{
+    var strMessage = strDataName + " must be nine digits, formatted as \"999-99-9999\", and may not start with a \"9\" nor \"666\".";
+    var tempSSN = strSSN.trim();
+
+    strSSN = (tempSSN.length == 9 && !isNaN(tempSSN))
+        ? tempSSN.substr(0, 3) + "-" + tempSSN.substr(3, 2) + "-" + tempSSN.substr(5, 4)
+        : tempSSN;
+
+    var isValid = IsValidPattern(strSSN, RexSSN, strMessage);
+
+    return (isValid) ? strSSN : null;
+}
+
+//************************************************************************************************
+function IsValidPhone(strPhone, strDataName) 
+{
+    var strMessage = strDataName + " must be ten digits, formatted as \"999-999-9999\", where the first digit is between 2 and 9.";
+    var tempPhone = strPhone.trim();
+
+    strPhone = (tempPhone.length == 10 && !isNaN(tempPhone)) 
+        ? tempPhone.substr(0, 3) + "-" + tempPhone.substr(3, 3) + "-" + tempPhone.substr(6, 4)
+        : tempPhone;
+
+    var isValid = IsValidPattern(strPhone, RexPhoneUS, strMessage);
+
+    return (isValid) ? strPhone : null;
+}
+
+//************************************************************************************************
+function IsValidZip(strText, strDataName, countryVal)
+{
+    var strMessage = countryVal.toUpperCase() === 'USA'
+        ? "Invalid Zip Code: Zip must be five or nine digits, formatted as \"99999\" or \"99999-9999\"."
+        : strDataName + " is not valid.";
+
+    var isValid = IsRequired(strText, strDataName);
+    if (isValid) {
+        var country = countryVal || '';
+        isValid = IsValidPattern(strText.toUpperCase(), getRexZipCode(country), strMessage);
+    }
+    return isValid;
+}
+
+//************************************************************************************************
+function IsValidEmail(strText, strDataName)
+{
+    var strMessage = strDataName + " is not valid.";
+    return IsValidPattern(strText, RexEmailAddress, strMessage);
+}
+
+//************************************************************************************************
+function IsValidAmount(strText, strDataName) 
+{
+    var strMessage = strDataName + " is not valid.";
+    return IsValidPattern(strText, RexDecimalAmount, strMessage);
+}
+
+//************************************************************************************************
+function IsValidPattern(strText, strPattern, strMessage)
+{
+    var pattern = new RegExp(strPattern);
+    var isValid = pattern.test(strText);
+
+    if (!isValid)
+    {
+        AppendMsg(strMessage);
+    }
+    return isValid;
+}
+
+//******************************Check if the value contains any invalid characters
+function IsValidText(value) {
+    if (value !== 'undefined' && value !== "") {
+        return !(/[<>&"']/.test(value));
+    }
+
+    return true;
+}
+
+//******************************Check if the value contains any invalid characters and if so then display message to confirm save operation
+function IsValidWithConfirmSave(value) {
+    if (value !== 'undefined' && value !== "") {
+        for (var i = 0; i < arguments.length; i++) {
+            if (!IsValidText(arguments[i])) {
+                return confirm(InvalidTextSaveMessage);
+            }
+        }
+    }
+
+    return true;
+}
+
+//************************************************************************************************
+function IsValueInRange(value, minValue, maxValue) 
+{
+    var isValueInRange = true;
+    value = value.replace(",", "");
+
+    if (isNumber(value))
+    {
+        //check for minimum value;
+        if (isDefined(minValue) && minValue.length != 0) 
+        {
+            if (parseFloat(value) < parseFloat(minValue)) 
+            {
+                isValueInRange = false;
+            }
+        }
+
+        //check for maximum value;
+        if (isDefined(maxValue) && maxValue.length != 0) 
+        {
+            if (parseFloat(value) > parseFloat(maxValue)) 
+            {
+                isValueInRange = false;
+            }
+        }
+    } else 
+    {
+        isValueInRange = false;
+    }
+    return isValueInRange;
+}
+//******************************To check if the amount paid for procedure is greater than the procedure cost.
+function IsPaidAmountGreaterThanProcedureCost(paidProcCost,actualProcCost)
+{
+    var bReturn = (FormatAsDecimal(actualProcCost) >= FormatAsDecimal(paidProcCost));
+    return bReturn;
+}
+
+
+
+function IsPaidAmountNotZero(txtPaid,txtActual)
+{
+    var bStatus = false;
+     bStatus = ((FormatAsDecimal(txtPaid) == 0) && (FormatAsDecimal(txtActual) == 0));
+    if (bStatus)
+        return bStatus;
+    else
+    {
+        bStatus = (FormatAsDecimal(txtPaid) != 0)
+    }
+    return bStatus;
+}
+
+//******************************To check numeric
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+//******************************To check is time in military format (HH:MM)
+function isMilitaryTime(input) {
+    var RE = /^([01]\d|2[0-3]):?([0-5]\d)$/;
+    return (RE.test(input));
+}
+
+//******************************To check the object is defined
+function isDefined(obj) {
+    if ((obj == undefined) || (obj == null) || (obj === undefined)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+//************************************************************************************************
+function IsRequired(strText, strDataName) {
+    if (strText == undefined)
+        return false;
+    
+    var isValid = strText.trim() != "";
+
+    if (!isValid) 
+    {
+        AppendMsg(strDataName + " is required.");
+    }
+    return isValid;
+}
+
+//************************************************************************************************
+function IsValidNumber(strText, strDataName) 
+{
+    var strTextClean = strText.toString().replace(',', '');
+    var isValid = (!isNaN(parseFloat(strTextClean))) && isFinite(strTextClean);
+
+    if (!isValid) {
+        AppendMsg(strDataName + " is not numeric.");
+    }
+    return isValid;
+}
+
+//************************************************************************************************
+function AppendMsg(strErrorMessage)
+{
+    gstrErrMsg += (gstrErrMsg.length == 0) ? strErrorMessage : "\n" + strErrorMessage;
+}
+
+//************************************************************************************************
+function AppendMsgFromArray(errorMessageArray) {
+    if (errorMessageArray.length == 0) return;
+    for (var i = 0; i < errorMessageArray.length; i++) {
+        gstrErrMsg += (gstrErrMsg.length == 0) ? errorMessageArray[i] : "\n" + errorMessageArray[i];
+    }
+}
+
+//************************************************************************************************
+function DisplayMsg()
+{
+    if (gstrErrMsg.length > 0)
+    {
+        alert(gstrErrMsg);
+    }
+    return (gstrErrMsg.length > 0);
+}
+
+//************************************************************************************************
+function DisplayMsgWithHeader(prependMessage) {
+    var len = gstrErrMsg.length;
+    if (len > 0) {
+        gstrErrMsg = prependMessage + "\r\n" + gstrErrMsg;
+        alert(gstrErrMsg);
+    }
+    return (len > 0);
+}
+
+function HasErrorMsg() {
+    return (gstrErrMsg.length > 0);
+}
+
+//************************************************************************************************
+function ClearMsg()
+{
+    gstrErrMsg = "";
+}
+
+//************************************************************************************************
+function DisableEnterKey()
+{
+    if (window.event && window.event.keyCode == 13)
+    {
+        window.event.keyCode = 0;
+    }
+}
+
+function GoGoGadgetForm() {
+    $("form:eq(0)").submit();
+}
+
+
+function XMLParsy(dataScriptId) {
+    var self = this;
+    var dataId = dataScriptId;
+
+    
+
+    self.Populate = function () {
+       
+        var dataInfo = document.getElementById(dataId).text;
+        var doc;
+        try {//Firefox, Mozilla, Opera, etc.
+            var parser = new DOMParser();
+            doc = parser.parseFromString(dataInfo, "text/xml");
+        } catch(e) {
+            try { //OLD IE
+                doc = new ActiveXObject("Microsoft.XMLDOM");
+                doc.async = "false";
+                doc.loadXML(dataInfo);
+            } catch(e) {
+                alert(e.message);
+                return;
+            }
+        }
+
+        $("[datafld]").each(function() {
+            var datafld = $(this).attr("datafld");
+            var value = '';
+            try {
+                value = doc.getElementsByTagName(datafld)[0].textContent; //Firefox, Mozilla, Opera, etc.
+                if (!value) {
+                    value = doc.getElementsByTagName(datafld)[0].childNodes[0].text; //OLD IE
+                }
+            } catch (e) {
+                //alert(e.message);
+                return;
+            }
+            
+            var tagName = $(this).prop("tagName");
+         
+            if (tagName == "INPUT" || tagName == "SELECT" || tagName == "TEXTAREA") {
+                var type = $(this).prop("type");
+        
+                if (type != undefined && (type.toLowerCase() == "checkbox" || type.toLowerCase() == "radio")) {
+                    $("#" + datafld.replace("_", "") + value).attr("checked", "checked");
+                } else if (type != undefined && (type.toLowerCase() == "select-one")) {  //for IE9 to function with dropdowns
+                    var elems = document.getElementsByTagName(tagName);
+                    for (var i = 0; i < elems.length; i++) {
+
+                        try
+                        {
+                            if ($( elems[i] ).attr('dataFld') == datafld) {
+                                $("#" + elems[i].id + " option[value='" + value + "']").attr("selected", "selected");
+                                return;
+                            }
+                        }
+
+                        // IE 9 Compatibility mode
+                        catch (e)
+                        {
+                            if (elems[i].attdataFld == datafld) {
+                                $("#" + elems[i].id + " option[value='" + value + "']").attr("selected", "selected");
+                                return;
+                            }
+                        }
+                    }
+                } else {
+                
+                    $(this).val(value);
+                    $(this).attr("value", value); //for IE9 to function 
+                }
+            } else {
+                $(this).html(value);
+            }
+        });
+    };
+
+    self.Send = function () {
+        var xmlInfo = document.getElementById(dataId).text;
+        var doc;
+        try {//Firefox, Mozilla, Opera, etc.
+            var parser = new DOMParser();
+            doc = parser.parseFromString(xmlInfo, "text/xml");
+        } catch (e) {
+            try { //OLD IE
+                doc = new ActiveXObject("Microsoft.XMLDOM");
+                doc.async = "false";
+                doc.loadXML(xmlInfo);
+            } catch (e) {
+                //alert(e.message);
+                return;
+            }
+        }
+        $("[datafld]").each(function() {
+            var datafld = $(this).attr("datafld");
+            var newValue = $(this).val();
+            var tagName = $(this).prop("tagName");
+            if (tagName == "INPUT" || tagName == "SELECT" || tagName == "TEXTAREA") {
+                var type = $(this).prop("type");
+                if ((type && type.toLowerCase() == "checkbox" || type.toLowerCase() == "radio")) {
+                    if ($(this).is(":checked")) {
+                        try {
+                            doc.getElementsByTagName(datafld)[0].textContent = newValue; //Firefox, Mozilla, Opera, etc.
+
+                        } catch (e) {
+                            try {
+                                doc.getElementsByTagName(datafld)[0].childNodes[0].text = newValue; //OLD IE
+                            } catch (e) {
+                            }
+                            return;
+                        }
+                    }
+                } else {
+                    try {
+                        doc.getElementsByTagName(datafld)[0].textContent = newValue; //Firefox, Mozilla, Opera, etc.
+                    
+                    } catch (e) {
+                        try {
+                            doc.getElementsByTagName(datafld)[0].childNodes[0].text = newValue; //OLD IE
+                        } catch (e) {
+                            doc.getElementsByTagName(datafld)[0].text = newValue; //IE8 - in case the above fails
+                        }
+                        return;
+                    }
+                    doc.getElementsByTagName(datafld)[0].textContent = newValue;
+                }
+            }
+        });
+        var newXMLData;
+        try {
+            newXMLData = (new XMLSerializer()).serializeToString(doc);
+        } catch (e) {
+            newXMLData = doc.xml;
+        }
+
+        if ($("form:eq(0)").valid()) {
+            $("#NewXML").val(newXMLData);
+            GoGoGadgetForm();
+        }
+        else {
+            DisplayMsg();
+            pv.log("not valid");
+         
+        }
+        return false;
+    };
+}

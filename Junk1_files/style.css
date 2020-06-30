@@ -1,0 +1,1255 @@
+body
+{
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px 0px 0px 0px;
+}
+
+xml {
+    display: none;
+}
+
+p, td
+{
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+input, textarea 
+{
+    font-size: 10pt;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.HideObject
+{
+	display: none;
+	visibility:hidden ;
+}
+.ShowObject
+{
+	visibility: visible;
+}
+.Panel
+{
+	background-color: #d4ccc7;
+}
+.Title1
+{
+	background-color: #DEEEFD;
+	border: solid 1px #B9DDFF;
+	font-weight: bold;
+	font-size: 14pt;
+	color: #000080;
+	margin: 0px 0px 4px 0px;
+	padding: 2px 2px 2px 2px;
+}
+.Title2
+{
+	background-color: #DEEEFD;
+	border: solid 2px #000000;
+	font-weight: bold;
+	font-size: 16pt;
+	color: #000080;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 2px 2px 2px;
+}
+.Title3
+{
+	background-color: #DEEEFD;
+	border: solid 3px #000000;
+	font-weight: bold;
+	font-size: 18pt;
+	color: #000080;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 2px 2px 2px;
+}
+.Title4
+{
+	background-color: #DEEEFD;
+	border: solid 1px #B9DDFF;
+	font-weight: bold;
+	font-size: 14pt;
+	color: #000080;
+	margin: 0px 0px 4px 0px;
+	padding: 2px 2px 2px 2px;
+    width: 100%;
+}
+.Table-Main
+{
+	margin: 0px 0px 10px 0px;
+	padding: 0px 4px 0px 4px;
+	width: 100%;
+}
+
+.Table-Main-No-Spacing {
+    margin: 0px 0px 10px 0px;
+    padding: 0px 4px 0px 4px;
+    width: 100%;
+    border-collapse: collapse !important;
+}
+
+.Table-With-Spacing {
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+
+.Table-Header1
+{
+	background-color: #ccccff;
+	color: #000080;
+	font-size: 11pt;
+	font-weight: bold;
+}
+.Table-Header2
+{
+	background-color: #ccccff;
+	color: #000080;
+	font-size: 10pt;
+	font-weight: bold;
+	margin: 1px 1px 1px 1px;
+	padding: 1px 1px 1px 1px;
+}
+.Table-Header3
+{
+	background-color: #cccccc;
+	color: #000000;
+	font-size: 12pt;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+
+.Table-NewLine
+{
+	background-color: #00FFFF;
+}
+.Table-Border
+{
+	border-collapse: collapse;
+	border: solid 1px #000000;
+}
+
+.DataGrid 
+{
+    font-size: 8pt;
+    border-collapse: collapse;
+    border: solid 1px #000000;
+}
+.DataGrid2 
+{
+    font-size: 8pt;
+    border-collapse: collapse;
+    border: solid 1px #000000;
+}
+.DataGrid-Item
+{
+	background-color: #FFFFFF;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.DataGrid-Item2
+{
+	background-color: #FFFFFF;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.DataGrid-AlternatingItem
+{
+	background-color: #D3D3D3;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.DataGrid-AlternatingItem2
+{
+	background-color: #D3D3D3;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.DataGrid-AlternatingItem3 {
+    background-color: #f0f0f6;
+    margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.DataGrid-SelectedItem
+{
+	padding-right: 2px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	margin: 2px;
+	color: #000000;
+	padding-top: 2px;
+	background-color: #FFD700;
+}
+.DataGrid-Footer
+{
+	font-weight: bold;
+	background-color: #ccccff;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+}
+.DataGrid-Footer-NonBold
+{
+	padding-right: 2px;
+	padding-left: 2px;
+	font-weight: bold;
+	padding-bottom: 2px;
+	margin: 2px;
+	padding-top: 2px;
+	background-color: #ccccff;
+	text-decoration: none;
+}
+.DataGrid-Header
+{
+	font-weight: bold;
+	background-color: #999999;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+    text-align: center;
+}
+
+.DataGrid-Header2
+{
+	font-weight: bold;
+	background-color: #999999;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+}
+.DataGrid-Header3
+{
+    font-size:11pt;
+	background-color: #999999;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+}
+
+.DataGrid-Header2 th
+{
+	min-width: 48px;
+}
+
+.DataGrid-SubtotalRow
+{
+	font-weight: bold;
+	background-color: #FAFAD2;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+}
+.DataGrid-SubtotalRow2
+{
+	font-weight: bold;
+	background-color: #FAFAD2;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	text-decoration: none;
+}
+.DataGrid-SortColHeader
+{
+	padding: 2px 2px 2px 2px;
+	font-weight: bold;
+	margin: 2px 2px 2px 2px;
+	background-color: #D8BFD8;
+	text-decoration: none;
+}
+
+.DataGrid-SortColHeader2
+{
+	padding: 2px 2px 2px 2px;
+	font-weight: bold;
+	margin: 2px 2px 2px 2px;
+	background-color: #D8BFD8;
+	text-decoration: none;
+}
+
+.DataGrid-LightRow
+{
+	background-color: #e2e2e2;
+}
+.DataGrid-LightRow2
+{
+	background-color: #e2e2e2;
+}
+
+.DataGrid-ItemCentered
+{
+	background-color: #FFFFFF;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+    text-align: center;
+}
+.DataGrid-AlternatingItemCentered
+{
+	background-color: #D3D3D3;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+    text-align: center;
+}
+
+.CrgEntry-Item
+{
+	color: #191970;
+	background-color: #B0C4DE;
+}
+.Show-CrgEntry-Item
+{
+	background-color: #D3D3D3;
+	visibility: visible;
+}
+.CrgEntry-AlternatingItem
+{
+	color: #000000;
+	background-color: #D3D3D3;
+}
+.CrgEntry-AlternatingItem2
+{
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.Button-Add
+{
+	font-size: 8pt;
+	background-color: #FFFF00;
+}
+.Button-Alert
+{
+	font-size: 8pt;
+	color: #FF0000;
+}
+.Button-Back
+{
+	font-size: 8pt;
+}
+.Button-Back-OKToText {
+    display: none;
+    font-size: 7pt;
+    vertical-align: top;
+}
+.Button-Cancel
+{
+	font-size: 8pt;
+}
+.Button-Copy
+{
+	font-size: 8pt;
+	background-color: #cccccc;
+}
+.Button-Delete
+{
+	font-size: 8pt;
+	background-color: #FF0000;
+}
+.Button-Exit
+{
+	font-size: 8pt;
+}
+.Button-Edit
+{
+	font-size: 8pt;
+	color: #000000;
+	background-color: #ccccff;
+}
+.Button-Link
+{
+	font-size: 8pt;
+}
+.Button-Login
+{
+	font-size: 8pt;
+}
+.Button-Print
+{
+	font-size: 8pt;
+	color: #008000;
+}
+.Button-Refresh
+{
+	font-size: 8pt;
+}
+.Button-Reset
+{
+	font-size: 8pt;     
+    background-color: #FF0000;
+}
+.Button-Save
+{
+	font-size: 8pt;
+	background-color: #FFD700;
+}
+.Button-Search
+{
+	font-size: 8pt;
+	background-color: #cccccc;
+}
+.Button-Toggle
+{
+      font-size: 8pt;
+}
+.Button-Update
+{
+	font-size: 8pt;
+	background-color: #FFD700;
+}
+
+.Button-Blue {
+    background-color: #164ba0;
+    border: 1px solid #000080;
+    color: #efefef;
+}
+.Button-Green {
+    background-color: #008000;
+    border: 1px solid #006400;
+    color: #efefef;
+}
+.Button-No {
+    background-color: #FF0000;
+    border: 1px solid #800000;
+    color: #efefef;
+}
+.Button-Green:hover {
+    background-color: #008080;
+}
+.Button-Blue:hover {
+    background-color: #197ec6;
+}
+.Button-No:hover {
+    background-color: #b22222;
+}
+.Button-Green,.Button-Blue,.Button-No {
+    margin-top: 2px;
+    padding-bottom: 2px;
+    font-size: 10pt;
+}
+.Button-Blue:hover, .Button-Back:hover, .Button-Green:hover {
+    cursor: pointer;
+}
+.Asterisk
+{
+	color: #FF0000;
+}
+.ErrorMessage1
+{
+	color: #FF0000;
+	font-size: 10pt;
+    white-space:pre-wrap;
+}
+.ErrorMessage2
+{
+	color: #FF0000;
+	font-size: 12pt;
+}
+.ErrorMessage3
+{
+	color: #FF0000;
+	font-size: 14pt;
+}
+.MultipleNotification
+{
+ color: #008000;
+ font-size: 10pt;
+}
+
+.Standout
+{
+	color: #800080;
+	font-weight: bold;
+}
+
+.Menu
+{
+    background-color: #000000;
+	border-top: #FFFFFF 1px solid;
+	border-bottom: #000000 2px solid;
+	padding: 0px 4px 0px 4px;
+    position: absolute;
+    visibility: hidden;
+    white-space: nowrap;
+}
+.Menu a
+{
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none
+}
+.Menu a:hover
+{
+    color: #FFD700;
+}
+.Menu-Header
+{
+    background-color: #000000;
+    cursor: pointer;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 0px 0px 0px 0px;
+    color: #FFFFFF;
+    white-space: nowrap;
+    height: 20px;
+    vertical-align: top;
+}
+
+.Menu-Item
+{
+    font-size: 9pt;
+	padding: 0px 0px 0px 0px;
+	white-space: nowrap;
+	
+}
+
+.MsgBackground
+{
+	padding-right: 20px;
+	padding-left: 20px;
+    font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	color: #FFFFFF;
+	padding-top: 20px;
+	background-color: #000080;
+}
+.Navigation-Link a:link
+{
+	color: #000000;
+	text-decoration: none;
+}
+.Navigation-Link a:visited
+{
+	color: #000000;
+	text-decoration: none;
+}
+.Navigation-Link a:hover
+{
+	color: #FF0000;
+	text-decoration: none;
+}
+
+@media print
+{
+	body 
+	{
+		FONT-SIZE: 10pt;
+		COLOR: #000000;
+		FONT-FAMILY: Arial;
+		margin: 0px 0px 0px 0px;
+		white-space:nowrap;
+		
+	 }
+    body .mainBody {
+        margin: 0;
+        padding: 0;
+    }
+	 .TopBarMenu a:hover
+	{	
+		display: none;	
+	}
+	.MenuHeader
+	{	
+		display: none;	
+	}
+	.TopBar
+	{
+		display: none;
+	}
+
+	.Menu
+	{	
+		display: none;	
+	}
+	.Menu a
+	{	
+		display: none;	
+	}
+	.Menu-Item
+	{	
+		display: none;	
+	}
+	
+	.Menu-Spacer
+	{	
+		display: none;	
+	}
+	.Menu-Header
+	{	
+		display: none;	
+	}
+	.TopBarItem
+	{	
+		display: none;	
+	}
+	.TopBarItem a
+	{	
+		display: none;	
+	}
+	.TopBarItem a:hover
+	{	
+		display: none;	
+	}
+	.TopBarMenu
+	{	
+		display: none;	
+	}
+	.TopBarMenu a
+	{	
+		display: none;	
+	}
+	TABLE#tblMenuBar TD
+	{	
+		display: none;	
+	}
+	TABLE#tblMenuBar TD.clsMenuBarItem
+	{	
+		display: none;	
+	}
+
+	DIV.clsMenu
+	{	
+		display: none;	
+	}
+	DIV.clsMenu A
+	{	
+		display: none;	
+	}
+	DIV.clsMenu A:hover
+	{	
+		display: none;	
+	}
+	.HidePrint
+	{
+		display: none;	
+	}
+	DIV.clsMenuItem
+	{	
+		display: none;	
+	}
+	.Button-Add
+	{
+		display: none;	
+	}
+	.Button-Alert
+	{
+		display: none;	
+	}
+	.Button-Back
+	{
+		display: none;	
+	}
+	.Button-Cancel
+	{
+		display: none;	
+	}
+	.Button-Copy
+	{
+		display: none;	
+	}
+	.Button-Delete
+	{
+		display: none;	
+	}
+	.Button-Exit
+	{
+		display: none;	
+	}
+	.Button-Edit
+	{
+		display: none;	
+	}
+	.Button-Link
+	{
+		display: none;	
+	}
+	.Button-Login
+	{
+		display: none;	
+	}
+	.Button-Print
+	{
+		display: none;	
+	}
+	.Button-Refresh
+	{
+		display: none;	
+	}
+	.Button-Reset
+	{
+		display: none;	
+	}
+	.Button-Save
+	{
+		display: none;	
+	}
+	.Button-Search
+	{
+		display: none;	
+	}
+	.Button-Toggle
+	{
+		display: none;	
+	}
+	.Button-Update
+	{
+		display: none;	
+	}
+	a:link, a:visited 
+	{
+		color: #520;
+		background: transparent;
+		font-weight: bold;
+		text-decoration: underline;
+   }
+    #footer {
+        display: none;
+    }
+	
+}
+
+.TextBox-ReadyOnly
+{
+	color: #000080;
+  
+}
+.TextBox-Bold {
+    font-weight: bold;
+}
+.InvoiceTitle2
+{
+	font-weight: bolder;
+	font-size: 14;
+	margin: 0 0 4 0;
+	padding: 2 2 2 2;
+}
+.InvoiceTitle3
+{
+	font-weight: bolder;
+	font-size: 20;
+	margin: 0 0 2 0;
+	padding: 2 2 2 2;
+}
+.InvoiceLine
+{
+	font-weight: normal;
+	font-size: 9;
+	margin: 0 0 2 0;
+	padding: 2 2 2 2;
+}
+.InvoiceTitle1
+{
+	font-weight: bold;
+	font-size: 10;
+	margin: 0 0 2 0;
+	padding: 2 2 2 2;
+}
+.InvoicePracticeInfo
+{
+	font-weight: bolder;
+	font-size: 10;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.Button-Special-Purpose
+{
+	font-weight: bold;
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #808080;
+}
+.CrgReceipt-Header
+{
+	font-size: 9pt;
+	font-family:'Arial Narrow' , 'Times New Roman';
+	background-color: #C0C0C0;
+}
+.CrgReceipt-Header2
+{
+	font-size: 8pt;
+	font-family: 'Arial Narrow', 'Times New Roman' ;
+}
+.CrgReceipt-Header3
+{
+	font-weight: bold;
+	font-size: 12pt;
+	font-family: Verdana, 'Times New Roman';
+}
+.CrgReceipt-Header4
+{
+	font-weight: bold;
+	font-size: 11pt;
+	font-family: Verdana, 'Times New Roman';
+	text-decoration: underline;
+}
+.CrgReceipt-Header5
+{	
+	font-size: 10pt;
+	font-family: Verdana, 'Times New Roman';
+    font-style: italic;    
+}
+.CrgReceipt-Content
+{
+	font-size: 8pt;
+	font-family: Verdana, 'Arial Narrow' , 'Times New Roman' , 'Courier New';
+}
+.CrgReceipt-Content2
+{
+	font-size: 8pt;
+	font-family: 'Arial Narrow';
+}
+.CrgReceipt-Content3
+{
+	font-size: 8pt;
+	font-family: Verdana;
+}
+.CrgReceipt-Content4
+{
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana;
+}
+.CrgReceipt-Comment
+{
+	font-size: 8pt;
+	font-style: italic;
+	font-family: 'Arial Narrow';
+}
+.PatVerForm-Content {
+    font-size: 12pt;
+    font-family: 'Verdana';
+}
+
+.PatVerForm-Content2 {
+    font-size: 12pt;
+    font-family: 'Verdana';
+    font-style: bold;
+}
+.Form-Content 
+{ 
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: arial, sans-serif, verdana 
+}
+.ActiveStatus
+{
+	color: #FF0000;
+}
+.ClosedStatus
+{
+	color: #008000;
+}
+.Table-ArTrans 
+{
+    BORDER-RIGHT: #F08080 2px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #F08080 2px solid;
+    PADDING-LEFT: 2px;
+    PADDING-BOTTOM: 2px;
+    FONT-SIZE: 10px;
+    BORDER-LEFT: #F08080 2px solid;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: #F08080 2px solid;
+    BORDER-COLLAPSE: collapse
+}
+.Table-ArContent 
+{ 
+	FONT-SIZE: 10px; 
+	COLOR: #000033; 
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif 
+}
+.CR-Color { COLOR: #FF0000 }
+.DB-Color { COLOR: #000080 }
+.Button-NoOwed { FONT-SIZE: 8pt; BACKGROUND-COLOR: #cccccc }
+.Rpt_ClinicList
+{
+	margin-top: 0px;
+	padding-left: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.highlight
+{
+    background-color:Yellow;
+}
+.left
+{
+    float:left;
+    display:block;
+}
+.right
+{
+    float:right;
+    display:block;
+}
+.alignRight
+{
+    float:right;
+    display:block; 
+}
+.boldFont
+{
+    font-weight:bolder;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.margin-bottom-default {
+    margin-bottom: 5px;
+}
+
+.marginLeft {
+    margin-left: 5px;
+}
+
+.DataGrid4
+{
+	font-size: 9pt;
+	border-collapse: collapse;
+	border: solid 2px #000000;
+}
+.DataGrid4 td
+{
+   padding:2px 2px;
+}
+
+.DataGrid4-Item
+{
+	/*background-color: #FFFFFF;*/
+	line-height:17px;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+    /*text-align: center;*/
+}
+.DataGrid4-Footer {
+    background-color: #gold;
+    margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+
+.mainBody {
+    margin: 3px 3px;
+}
+.mainContent {
+    margin: 10px 10px;
+}
+.hiddenField {
+    display: none;   
+ }
+.showField {
+   display:;
+}
+
+
+.contentTable {
+    background-color: transparent;
+    padding: 2px 2px 2px 2px;
+}
+.contentTable th {
+    background-color: #d3d3d3;
+    text-align: left;
+}
+.divInline {
+    display: inline;
+}
+
+.modalPopup {
+	background-color:Black;
+	border-width:4px;
+	font-family:Verdana;
+	font-size:medium;
+	padding:20px;
+	width:800px;
+	overflow:auto;
+}
+
+.modalBackground {
+	background-color:Black;
+	filter:alpha(opacity=62);
+	opacity:0.7;
+}
+
+.ModalPopupBG
+{
+    background-color: #666699;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+
+.nestGrid{
+    display:none;position:
+    relative;left:15px;
+    OVERFLOW: auto;
+    WIDTH: 97%;
+}
+
+.ChildGrid
+{
+    font-size: x-small;
+	border: solid 1px #0083C1;
+    width: 98%;
+    font-style: Verdana;
+    margin: 5px;
+}
+
+.ChildGrid-Item
+{
+    background-color:#ffffff;
+}
+
+.ChildGrid-SelectedItem
+{
+	padding-right: 2px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	margin: 2px;
+	color: #000000;
+	padding-top: 2px;
+	background-color: #FFD700;
+}
+.ChildGrid-Footer
+{
+	font-weight: bold;
+	background-color: #ccccff;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+}
+.ChildGrid-Header {
+    background-color:#0083C1;
+    color: white;
+  
+}
+.smallPopup 
+{
+    border-color: #forestgreen;
+    border: 2px solid;
+    background-color: #FFD700;
+    color: #000000;
+    font-size: larger;
+    padding: 3px;
+   
+}
+.popupCloseButtons {
+    background-image: url(../Images/close.gif);
+    background-repeat: no-repeat;
+    width: 15px;
+    position: absolute;
+    top: 1;
+    float: right;
+    right: 1;
+}
+.top {
+    vertical-align: top;
+}
+
+.middle 
+{
+     vertical-align:middle;
+}
+.bottom {
+    vertical-align: bottom;
+}
+.error {
+    font-weight: bolder;
+    color: #ff0000;
+}
+.insideTable {
+    position:relative;
+    left:15px;
+    OVERFLOW: auto;
+    WIDTH:80%
+}
+
+
+.mainBody2   
+{
+    background: #fff;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+.contentTable2{
+    width: 100%;
+    border:0
+}
+
+.contentTable2 th {
+    text-align: right;
+    font-size: 9pt;
+}
+
+.contentTable2 td {
+    
+}
+
+
+/* Waity Box  
+----------------------------------------------------------*/
+
+.waitybox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 40000;
+    background: url(../images/Spacer.gif) repeat;
+}
+    .waitybox .innerwaity
+    {
+        height: 10%;
+        width: 20%;
+        background: url(../images/pvm_waity_loading.gif) no-repeat 50% 50% #dcdcdc;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 10px;
+        margin: 0 auto;
+        margin-top: 10%;
+    }
+
+.waiting {
+    z-index: 1;
+}
+
+/*  Wait Spinner  -- Add small spinner to background of control right aligned
+-----------------------------------------------------------------------------------------*/
+.waitSpinner {
+    background: url('../Styles/images/ajax-loader_sm.gif') no-repeat #DCDCDC;
+    background-position: 99% 50%;
+}
+
+
+/* Main Content Style */
+.mainBody {
+    padding-bottom: 40px; /* Give room for footer to display on bottom of large pages */
+}
+/* Footer Related Styles */
+#footer {
+    position: fixed;
+    bottom: -6px;
+    width: 102%;
+    margin-left: -2px;
+}
+.FooterDiagnostics
+{
+	background-color: #DEEEFD;
+	border: solid 1px #B9DDFF;
+	color: #000080;
+	margin: 0px 0px 4px 0px;
+	padding: 2px 2px 2px 2px;
+    width: 100%;
+    text-align: center;
+}
+.FooterDiagnosticsSmall span {
+    font-size: 7pt;
+}
+.FooterDiagnosticsLarge span {
+    font-size: 9pt;
+}
+
+.tdwrap {
+    white-space:pre-wrap;
+}
+
+#divLogForms img { display: block;}
+
+
+.disabledInput {
+    background-color: #e5e5e5;
+    color: rgb(120, 120, 120);
+    border: 1px solid #bababa;
+    padding: 2px 0px;
+}
+
+table .diagnosticCodes {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table .diagnosticCodes td {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table .diagnosticCodes input {
+   display: block;
+   width: 93%;
+   height: 100%;
+}
+
+td .codePriority {
+    width: 3%;
+    min-width: 20px;
+    text-align: center;
+}
+
+td .codeICD-10 {
+    width: 120px;
+}
+
+td .codeICD-9 {
+    width: 55px;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+td .codeSpacer {
+    width: 1%;
+    min-width: 10px;
+}
+
+td .codeAsterisk {
+    width: 2%;
+    min-width: 15px;
+}
+
+td .codeButton {
+    width: 70px;
+    text-align: left;
+}
+
+td .codeDescription {
+    width: 93%;
+}
+
+td .center {
+    text-align: center;
+}
+
+td .align-left-padding {
+    text-align: left;
+    padding-left: 1em;
+}
+
+.Icd9Override {
+    color: #FF0000;
+}
+
+.BoldText {
+    font-weight: bold;
+}
+td .ColumnLabel {
+    text-align: right;
+}
+
+.RadScheduler a {
+    text-decoration: underline !important;
+}
+
+.inputpicker-wrapped-list .table {
+    width: 100%;
+}
+
+.newpat-docinfo {
+    color: #197ec6;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+/*BTP 157445 - added for LDPayment.ascx*/
+#tblCCHistory {
+    font-family: Verdana, Arial, Helvetica, Sans-Serif;
+    font-size: 8pt;
+}

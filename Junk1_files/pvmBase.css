@@ -1,0 +1,1490 @@
+	body {
+		min-width: 1280px;
+		background: #ffffff;
+		font-family: "Open Sans",Arial,Helvetica,sans-serif;
+		font-size: 12px;
+        -ms-overflow-style: scrollbar;
+	}
+
+	.mainBody {
+		margin: 0!important;
+	}
+
+	.clear {
+		clear: both;
+	}
+
+    .boldText {
+        font-weight: bold;
+    }
+
+    .centeredText {
+        text-align: center;
+    }
+
+	.MsgBackground {
+	    padding-right: 20px;
+	    padding-left: 20px;
+	    font-size: 14px;
+	    font-weight: bold;
+	    padding-bottom: 20px;
+	    color: #FFFFFF;
+	    padding-top: 20px;
+	    background-color: #1a2956;
+	    border-radius: 5px;
+	    box-shadow: 0px 0px 4px #656565;
+	}
+
+	/* Logbook specific styles */
+
+	#log-book .date-header {
+	    display: inline-block;
+    	margin: 5px 0 5px 0;
+    	font-size: 14px;
+    	text-shadow: 0px 1px 3px #cccccc;
+	}
+
+	.sectionhead {
+	    background-color: #1a2954;
+	    padding: 5px 0px;
+	    color: #ffffff;
+	    font-weight: normal!important;
+	    margin-top: 5px;
+	    border-top-left-radius: 5px;
+    	border-top-right-radius: 5px;
+	}
+
+	.subsectionhead {
+	    background-color: #ebe8eb;
+	}
+
+    /* CrgEntry Procedure table styles */
+
+    #tblNewCrgItemsHdr td:nth-child(4) {
+        text-align: right;
+        padding-right: 48px;
+    }
+
+    #tblNewCrgItems td:nth-child(3) select:not(:first-child) {
+        margin-left: 2%;
+    }
+
+/* Remove User Name from top in code, until then hide in header move items to footer. */
+p.userSettings {
+    display: none;
+}
+
+	/* Bad CSS on the UnassignedWorkList Page to be adjusted */
+
+	.pageBody {
+		margin-left: 0px!important;
+		margin-right: 0px!important;
+	}
+
+	/* Bad CSS on the Occ Med Work Queue Page to be removed later */
+
+	body.epsWorkQueue .mainDiv {
+		margin-left: 0px!important;
+		margin-right: 0px!important;
+	}
+
+	/* Occ Med Work Queue CSS  */
+
+	body.epsWorkQueue .colorBox ul {
+	    list-style-type: square;
+	    display: inline;
+	    /* margin-bottom: 0px!important; */
+	    padding: 0px;
+	}
+
+	body.epsWorkQueue .colorBox {
+	    border: 1px solid #21cf36;
+	    width: 135px;
+	    font-weight: normal;
+	    border-radius: 5px;
+	    box-shadow: 0px 0px 4px #656565;
+	    margin: 5px 10px;
+	    padding: 3px;
+	}
+
+	body.epsWorkQueue .colorBox ul li {
+	    padding-top: 2px;
+	    padding-left: 3px;
+	    padding-bottom: 2px;
+	}
+
+	/* Font Corrective Styles that will need to be properly fixed in actual code, removing inline styles or adjusting css */
+
+	p, td {
+	    font-size: inherit!important;
+	    font-family: Verdana, Arial, Helvetica, sans-serif;
+	}
+
+    /* DO NOT REMOVE THIS!!!! The bold is intentionally being removed because the <b> and <strong> tags are overused in PVM */
+    b, strong {
+        font-weight: normal;
+    }
+
+	.bold-label-form .address-control__label {
+		font-weight: normal!important;
+	}
+
+	span#lblPortalAccess {
+	    font-weight: normal!important;
+	}
+
+	.fieldGroup {
+		margin-bottom: 10px;
+	}
+
+	/* Navigation Styles */
+
+	.topHdrRightContent {
+		font-size: 12px;
+        text-align: right;
+        margin-top: 8px;
+	}
+
+	.topHdrRightContent .messageCount {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .topHdrRightContent .messageCount .glyphicon-envelope {
+        color:#F0AD4E;
+    }
+
+    .topHdrRightContent .messageCount.urgent .glyphicon-envelope {
+        color:#D9534F;
+    }
+
+	.userSettings:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.userInfo {
+		display: none;
+	}
+
+	.userInfo div {
+		margin-bottom: 5px;
+	}
+
+	.userInfo .fa-times-circle {
+		float: right;
+		cursor: pointer;
+	}
+
+	.navbar-collapse {
+		padding: 0px;
+	}
+
+	.navbar-nav{
+		background-color: #757e98;
+		box-shadow: 0px 0px 3px #000000;
+		margin: 0px;
+	}
+
+	.navbar-nav li {
+	    background: #1a2954; /* For browsers that do not support gradients */
+	    background: -webkit-gradient(linear, left top, left bottom, from(#1a2954), to(#003365));
+	    background: -webkit-linear-gradient(top, #1a2954, #003365);
+	    background: -moz-linear-gradient(top, #1a2954, #003365);
+	    background: -ms-linear-gradient(top, #1a2954, #003365);
+	    background: -o-linear-gradient(top, #1a2954, #003365);
+	    background: linear-gradient(top, #1a2954, #003365);
+	    margin-left: 1px;
+	    font-size: 13px;
+	}
+
+	.navbar-nav li:first-child {
+		margin-left: 0px;
+	}
+
+	.nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
+	    background: #555555; /* For browsers that do not support gradients */
+	}
+
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	    background: #000000; /* For browsers that do not support gradients */
+	    background: -webkit-linear-gradient(#5f5f5f, #1f1f1f); /* For Safari 5.1 to 6.0 */
+	    background: -o-linear-gradient(#5f5f5f, #1f1f1f); /* For Opera 11.1 to 12.0 */
+	    background: -moz-linear-gradient(#5f5f5f, #1f1f1f); /* For Firefox 3.6 to 15 */
+	    background: linear-gradient(#5f5f5f, #1f1f1f); /* Standard syntax (must be last) */
+	}
+
+	.nav>li>a {
+		color: #ffffff;
+		padding: 3px 10px;
+		font-size: 13px;
+		height: 26px;
+	}
+
+	li.dropdown:hover > .dropdown-menu {
+	    display: block;
+	}
+
+	li.dropdown:last-child>ul.dropdown-menu:last-child {
+	    left: auto;
+	}
+
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	    color: #555;
+	    cursor: default;
+	    background-color: #ddd;
+	    border: 1px solid #9d9d9d;
+	    border-bottom-color: transparent;
+	}
+
+	.nav-tabs>li>a {
+	    margin-right: 2px;
+	    line-height: 1.42857143;
+	    background-color: #f5f5f5;
+	    border: 1px solid transparent;
+	    border-radius: 4px 4px 0 0;
+	}
+
+	.dropdown-menu {
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.navbar-right .dropdown-menu {
+		left: 0;
+	}
+
+	.lastDrop {
+		right: 0!important;
+	    left: auto!important;
+	}
+	.dropdown-menu>li>a {
+		color: #ffffff;
+		padding: 3px 10px;
+	}
+
+	.navbar-nav .dropdown-menu li {
+		margin-left: 0px;
+	}
+
+	.navbar-nav .dropdown-menu li a:hover {
+		color: #ffffff;
+		background: #555555;
+	}
+
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	    color: #555;
+	    cursor: default;
+	    background-color: #ddd;
+	    border: 1px solid #9d9d9d;
+	    border-bottom-color: transparent;
+	}
+
+	.nav-tabs>li>a {
+	    margin-right: 2px;
+	    line-height: 1.42857143;
+	    background-color: #f5f5f5;
+	    border: 1px solid transparent;
+	    border-radius: 4px 4px 0 0;
+	}
+
+	/* Header Styles */
+
+	.Title1 {
+	    font-weight: normal;
+	    font-size: 14px;
+	    color: #ffffff;
+	    margin: 0px 0px 4px 0px;
+	}
+
+	.Title1 b {
+		font-weight: normal!important;
+		font-size: 14px!important;
+	}
+
+	.Title4 {
+	    font-weight: normal;
+	    font-size: 14px;
+	    color: #ffffff;
+	    margin: 0px 0px 4px 0px;
+	}
+
+	.Title4 td.ng-binding {
+	    margin-left: 10px;
+	    display: inline-block;
+	    line-height: 24px;
+	}
+
+	table.Title1,
+    table.Title4,
+    div.Title4,
+    .bannerBar,
+    table div.Title1,
+    div.Title1,
+    .pharmacyHeader {
+		-webkit-background-size: 100% 100%;
+	    -moz-background-size: 100% 100%;
+	    -o-background-size: 100% 100%;
+	    background-size: 100% 100%;
+	    background: -webkit-gradient(linear, left top, left bottom, from(#263b77), to(#1a2954));
+	    background: -webkit-linear-gradient(top, #263b77, #1a2954);
+	    background: -moz-linear-gradient(top, #263b77, #1a2954);
+	    background: -ms-linear-gradient(top, #263b77, #1a2954);
+	    background: -o-linear-gradient(top, #263b77, #1a2954);
+	    background: linear-gradient(top, #263b77, #1a2954);
+	    border-bottom: 2px solid #21cf36;
+	    border-top: 1px solid #004990;
+	    border-left: 0;
+	    border-right: 0;
+	    height: 31px;
+	    width: 100%;
+	    color: #ffffff;
+	    font-weight: normal!important;
+	    font-size: 14px;
+	    line-height: 23px;
+	    text-shadow: 0px 1px 3px #868686;
+	    padding: 0px 0px 0px 4px!important;
+	}
+
+	.bannerBar, table div.Title1 {
+		padding-top: 3px!important;
+		font-size: 14px;
+	}
+
+	.Table-Header1, .Table-Header2 {
+	    color: #1a2954!important;
+	    font-size: 14px!important;
+	    border-bottom: 2px solid #1a2954!important;
+	    background-color: transparent!important;
+	    background: transparent;
+	    padding-bottom: 3px;
+	    font-weight: normal!important;
+	}
+
+	.Table-Header1 label {
+	    color: #000000;
+	    text-shadow: none;
+	}
+
+	table.Title1 td {
+	    padding-right: 3px;
+	}
+
+	.Table-Header1 b {
+	    font-weight: normal;
+	    text-shadow: none;
+	    font-size: 12px;
+    }
+
+	.tableCustom > thead > tr > th {
+	    padding: 8px!important;
+	}
+
+	.container-cell-left {
+	    float: none;
+	}
+
+	/* Patient Menu UL/LI/A Styles */
+
+	#MenuPatient {
+	    margin-top: 4px;
+        position: relative;
+	}
+
+	#MenuPatient ul {
+	    margin: -4px 0 0 4px;
+        padding: 0;
+	    display: inline-block;
+        position: absolute;
+	}
+
+	#MenuPatient li {
+	    display: none;
+	    background: #1a2954;
+	    width: max-content;
+	    padding: 2px 10px;
+	    margin: 2px 0px;
+	    border-radius: 4px;
+	    border: 1px solid #ffffff;
+	    box-shadow: 0px 1px 3px #656565;
+	}
+
+    #MenuPatient li:first-of-type {
+        display: block;
+    }
+
+    #MenuPatient:hover li {
+        display: block;
+    }
+
+	#MenuPatient ul li a {
+		color: #ffffff;
+		font-size: 12px!important;
+	}
+
+	/* Button Styles */
+
+	/* Btn buttons in the future btn all buttons to get this style applied */
+	input[type=submit], input[type=button], button, .btn {
+	    display: inline-block;
+	    padding: 0px 8px;
+	    margin-bottom: 0;
+	    margin-right: 3px;
+	    font-size: 12px;
+	    font-weight: 400;
+	    line-height: 1.4;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    background-image: none;
+	    border-radius: 4px;
+	    outline: 0;
+	    min-height: 26px;
+	}
+
+	/* Default buttons in the future btn-default */
+
+	input[type=submit],
+	input[type=button],
+	.btn-default,
+	.Button-Link,
+	.Button-Search,
+	.Button-Back,
+	.Button-Exit,
+	.Button-Refresh,
+	.Button-Cancel,
+	.Button-Toggle,
+	.btn-action {
+	    font-size: 11px;
+	    border: 1px solid #ffffff;
+	    background: #e8ebe8;
+	    background-color: #e8ebe8;
+	    color: #333333;
+	    box-shadow: 0px 0px 3px #656565;
+	    border-radius: 4px;
+	    min-height: 26px;
+	}
+
+	input[type=submit]:hover,
+	input[type=button]:hover,
+	.btn-default:hover, .btn-default:active, .btn-default:active:hover, .btn-default:focus,
+	.Button-Link:hover, .Button-Link:active, .Button-Link:active:hover, .Button-Link:focus,
+	.Button-Search:hover, .Button-Search:active, .Button-Search:active:hover, .Button-Search:focus,
+	.Button-Back:hover, .Button-Back:active, .Button-Back:active:hover, .Button-Back:focus,
+	.Button-Exit:hover, .Button-Exit:active, .Button-Exit:active:hover, .Button-Exit:focus,
+	.Button-Refresh:hover, .Button-Refresh:active, .Button-Refresh:active:hover, .Button-Refresh:focus,
+	.Button-Cancel:hover, .Button-Cancel:active, .Button-Cancel:active:hover, .Button-Cancel:focus,
+	.Button-Toggle:hover, .Button-Toggle:active, .Button-Toggle:active:hover, .Button-Toggle:focus,
+	.btn-action:hover, .btn-action:active, .btn-action:active:hover, .btn-action:focus {
+	    background: #bebebe!important;
+	}
+
+	input#btnShowAllActivity {
+	    width: auto!important;
+	}
+
+	/* Success buttons in the future btn-success */
+
+	.Button-Update,
+	.Button-Save,
+	.btn-success {
+		font-size: 11px!important;
+		background: #21cf36!important;
+		background-color: #21cf36!important;
+		color: #ffffff!important;
+		border: 1px solid #ffffff!important;
+		text-shadow: 0px 1px 3px #333333!important;
+	    box-shadow: 0px 0px 3px #656565!important;
+	    min-height: 26px;
+	}
+
+	.Button-Update:hover, .Button-Update:active, .Button-Update:active:hover, .Button-Update:focus,
+	.Button-Save:hover, .Button-Save:active, .Button-Save:active:hover, .Button-Save:focus,
+	.btn-success:hover, .btn-success:active, .btn-success:active:hover, .btn-success:focus {
+		background: #4cae4c!important;
+		background-color: #4cae4c!important;
+	}
+
+	/* Info buttons in the future btn-info */
+
+	.btn-info {
+		background-color: #17a2b8!important;
+		color: #ffffff!important;
+		border: 1px solid #ffffff!important;
+		text-shadow: 0px 1px 3px #333333!important;
+	}
+
+	.btn-info:hover, .btn-info:active, .btn-info:active:hover, .btn-info:focus {
+		background-color: #127b8c!important;
+		border: 1px solid #ffffff!important;
+	}
+
+	/* Warning/caution buttons in the future btn-warning */
+
+	.btn-warning,
+	.Button-Add, .btn-pv-yellow {
+	    color: #ffffff!important;
+	    background: #ffb900!important;
+	    background-color: #ffb900!important;
+	    border: 1px solid #ffffff!important;
+	    box-shadow: 0px 0px 3px #656565!important;
+	    text-shadow: 0px 1px 3px #656565!important;
+	    min-height: 26px;
+	}
+
+	.Button-Add {
+		text-shadow: 0px 0px 0px transparent;
+	}
+
+	.btn-warning:hover, .btn-warning:active, .btn-warning:active:hover, .btn-warning:focus,
+	.Button-Add:hover, .Button-Add:active, .Button-Add:active:hover, .Button-Add:focus,
+	.btn-pv-yellow:hover, .btn-pv-yellow:active, .btn-pv-yellow:active:hover, .btn-pv-yellow:focus {
+		background: #ff9e00!important;
+	}
+
+	/* Danger buttons in the future btn-danger */
+
+	.Button-Delete, .btn-danger, #btnDelete {
+		color: #ffffff!important;
+		text-shadow: 0px 0px 3px #656565;
+		background: #f44336!important;
+		background-color: #f44336!important;
+		border: 1px solid #ffffff!important;
+		box-shadow: 0px 0px 3px #656565!important;
+		min-height: 26px;
+	}
+
+	.Button-Delete:hover, .Button-Delete:active, .Button-Delete:active:hover, .Button-Delete:focus,
+	.btn-danger:hover, .btn-danger:active, .btn-danger:active:hover, .btn-danger:focus,
+	#btnDelete:hover, #btnDelete:active, #btnDelete:active:hover, #btnDelete:focus {
+		background: #ff0000!important;
+	}
+
+	/* Disabled buttons in the future btn-disabled */
+	button[disabled], html input[type="button"][disabled],
+	.btn-disabled {
+	    cursor: not-allowed;
+	    color: #777777!important;
+	    background: #b7b7b7!important;
+	    background-color: #b7b7b7!important;
+	    border: 0px!important;
+	    text-shadow: 0px 0px 0px!important;
+    	box-shadow: 0px 0px 0px!important;
+    	min-height: 26px;
+	}
+
+	.DataGRid-ItemCentered button[disabled], .DataGRid-ItemCentered button  {
+	    float: right;
+	}
+
+	input[type="file"] {
+	    display: inline-block;
+	}
+
+	/* Utility List Delete buttons should be floated right */
+	.DataGrid-ItemCentered input.Button-Delete, .DataGrid-AlternatingItemCentered input.Button-Delete {
+	    float: right;
+	}
+
+	/* Table Styles */
+
+    .DataGrid-Header {
+        background: -webkit-gradient(linear, left top, left bottom, from(#263b77), to(#1a2954));
+        background: -webkit-linear-gradient(top, #263b77, #1a2954);
+        background: -moz-linear-gradient(top, #263b77, #1a2954);
+        background: -ms-linear-gradient(top, #263b77, #1a2954);
+        background: -o-linear-gradient(top, #263b77, #1a2954);
+        background: linear-gradient(top, #263b77, #1a2954);
+        border-bottom: 2px solid #cccccc;
+        border-top: 1px solid #004990;
+        height: 31px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: normal !important;
+    }
+
+    .ArHistory .DataGrid-Header, .ArReport .DataGrid-Header {
+        border-bottom: none;
+        border-top: none;
+    }
+
+	.DataGrid {
+	    font-size: 12px;
+	    border-collapse: collapse;
+	    border: solid 1px #cccccc;
+	}
+
+    .DataGrid-Header td {
+	    padding: 0px 3px;
+	    font-weight: normal!important;
+    }
+
+    .DataGrid-AlternatingItem {
+        background-color: #f5f5f5;
+        margin: 2px 2px 2px 2px;
+        padding: 2px 2px 2px 2px;
+    }
+
+    .DataGrid-CenterHeaderText th {
+        text-align: center;
+     }
+
+	th {
+	    text-align: left;
+	    font-weight: normal;
+	}
+
+	.DataGrid tr:hover, .DataGrid-Item:hover, .DataGrid-AlternatingItem:hover {
+	    background-color: #fffadd;
+	}
+
+	.Title4 tr:hover, .ng-scope:hover, thead.subsectionhead tr:hover {
+	    background-color: transparent;
+	}
+
+	.container-cell-left {
+		display: inline-block;
+    	margin-top: 3px;
+	}
+
+	/* Messaging Tables */
+	table#messageList .DataGrid4 th a, table#messageList .DataGrid4 th {
+	    color: #ffffff;
+	    font-weight: normal;
+	    font-size: 12px;
+	}
+
+
+
+	button#cboxClose {
+	    border: 0px;
+	}
+
+	/* Form Styles */
+
+	label {
+	    display: inline-block;
+	    max-width: 100%;
+	    margin-bottom: 1px;
+	    font-weight: 400;
+	    margin: 3px 5px;
+	    font-size: 12px;
+	}
+
+	.required {
+		border: 1px solid #ff0000!important;
+	}
+
+	.red {
+		color: #ff0000;
+	}
+
+	.fa-calendar-alt {
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		background: #f2f2f2;
+		padding: 5.5px;
+		box-shadow: inset 0px 0px 3px #555;
+	}
+
+	.form-control {
+	    display: inline-block;
+	    width: 100%;
+	    height: 26px;
+	    padding: 0px 1px 0px 3px;
+	    margin-bottom: 10px;
+	    font-size: 13px;
+	    line-height: 1.42857143;
+	    color: #555;
+	    background-color: #fff;
+	    background-image: none;
+	    border: 1px solid #bbb;
+	    border-radius: 4px;
+	    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	}
+
+	input, textarea {
+	    font-size: 12px;
+	    border-radius: 4px;
+	    border: 1px solid #aeaeae;
+	}
+
+	input[type="text"], select {
+	    min-height: 26px;
+	    padding: 0px 3px;
+	    border-radius: 4px;
+	}
+
+	input[type=checkbox], input[type=radio] {
+	    height: 14px;
+	    display: inline-block;
+	    width: 16px;
+	    border: 0px;
+	    box-shadow: 0px 0px 0px;
+	}
+
+	html input[type=text][disabled], input[disabled] {
+	    box-shadow: 0px 0px 0px #000000;
+	    cursor: not-allowed!important;
+	    color: #777777;
+	    background-color: #b7b7b7!important;
+	    border: 1px solid #ffffff;
+	}
+
+	.btn.dropdown-toggle {
+		border-radius: 0px;
+		border: 1px solid #bbb;
+		height: 28px;
+		padding-left: 6px;
+	}
+
+	/* User list Clinic Toggle */
+
+	input.clinicToggle {
+	    display: block;
+	    margin: 0px 0px -10px 0px;
+	}
+
+	/* Worklist Header Drop Down Automated Refund needs to be given specific ID to overwrite Form-Control margining & size */
+	select.input-sm {
+	    height: 26px;
+	    line-height: 26px;
+	    margin-bottom: 0px;
+	}
+
+	/* Footer Styles */
+
+	#Footer {
+		-webkit-background-size: 100% 100%;
+	    -moz-background-size: 100% 100%;
+	    -o-background-size: 100% 100%;
+	    background-size: 100% 100%;
+	    background: -webkit-gradient(linear, left top, left bottom, from(#263b77), to(#1a2954));
+	    background: -webkit-linear-gradient(top, #263b77, #1a2954);
+	    background: -moz-linear-gradient(top, #263b77, #1a2954);
+	    background: -ms-linear-gradient(top, #263b77, #1a2954);
+	    background: -o-linear-gradient(top, #263b77, #1a2954);
+	    background: linear-gradient(top, #263b77, #1a2954);
+	    border: 1px solid #1a2954;
+	    font-size: 11px;
+	    font-weight: normal;
+	    color: #ffffff;
+	    height: 30px;
+	    position: fixed;
+	    width: 100%;
+	    bottom: 0px;
+	    margin: 25px 0px 0px 0px;
+	}
+
+	#Footer .info {
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 5px;
+	}
+
+	/* Corrective Styles to current PVM items */
+
+	span#rblPrintNegative {
+	    width: inherit!important;
+	}
+
+	textarea#tbSpecialMessage {
+	    width: 100%!important;
+	}
+
+	.searchDiv input[type=submit] {
+	    margin-bottom: 5px;
+	}
+
+	table.Title1 input.Button-Exit {
+        margin-right: 3px;
+    }
+
+    /* This is a style on the Company Information page which is set to 75% and should be corrected or removed. */
+    .auto-style2 {
+    	width: 69%;
+    }
+
+    /* Remove this from header in code */
+
+    .collapse .alert {
+    	display: none;
+    }
+
+    /* AR Detail Section */
+    .Table-ArTrans {
+        border-radius: 5px !important;
+        margin:15px 5px;
+    }
+
+    .Table-ArTrans-HeaderRow {
+
+        background-color: #1a2954;
+        pointer-events: none;
+    }
+
+        .Table-ArTrans-HeaderRow td {
+            padding: 5px;
+            color: #ffffff !important;
+            border-top:0px !important;
+        }
+
+.Table-ArTrans :not(.Table-ArTrans-HeaderRow) td {
+    padding: 5px;
+}
+
+        .patArDetail .DataGrid tr:hover,
+        .patArDetail .DataGrid-Item:hover,
+        .patArDetail .DataGrid-AlternatingItem:hover {
+            background-color: transparent;
+        }
+
+    #tblEntryPageDetails tr td:first-of-type {
+        width: 150px !important;
+    }
+
+/* PatArHistory */
+.Table-Border-Detail {
+    background-color: #e2eaff;
+}
+
+    .Button-Back-OKToText {
+        display: none;
+        font-size: 7pt;
+        vertical-align: top;
+    }
+
+    /* Pharmacy Search */
+    body.popupPharmacyWindow {
+        min-width: 0;
+    }
+
+    body.popupPharmacyWindow table.MainContent {
+        margin-bottom: 5px;
+    }
+
+    body.popupPharmacyWindow .pharmacyHeader td:first-of-type {
+        width: auto !important;
+    }
+
+    body.popupPharmacyWindow .pharmacyHeader td:last-of-type {
+        width: 30px;
+        float: none !important;
+        text-align: right;
+    }
+
+    #pharmacySearchLegend {
+        width: 23px;
+        height: 23px;
+        background-image: url(help-circle.58f6e1ff0f523cf4fdd7.png);
+        background-size: 100% 100%;
+        display: block;
+        margin-top: -10px;
+        margin-left: -4px;
+    }
+
+    body.popupPharmacyWindow .Table-Header1.DataGrid-Header {
+        color: #ffffff !important;
+    }
+
+.TitleCSS tr td {
+
+    color: #fff;
+}
+
+#tblMain {
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    overflow: hidden;
+    border-collapse: separate !important;
+}
+
+.oddRow, .oddRow:hover {
+    background: #fff !important;
+}
+
+.evenRow, .evenRow:hover {
+    background: #f5f5f5 !important;
+}
+
+    .evenRow td, .oddRow td {
+        border-top: 1px solid #b7b7b7;
+    }
+
+#gvNewPatientNotes {
+    border-collapse: separate !important;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #b7b7b7;
+}
+
+    #gvNewPatientNotes tr th {
+        padding: 5px;
+    }
+
+#tblMain.tblMain {
+    border: none;
+}
+
+    #tblMain.tblMain table {
+        border: 1px solid #b7b7b7;
+        margin-bottom: 30px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-collapse: separate !important;
+        overflow: hidden;
+    }
+
+        #tblMain.tblMain table.TitleCSS {
+            border-collapse: separate !important;
+            margin-bottom: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            border-width: 0px !important;
+        }
+
+.tbl2 {
+    width: 100%;
+    border-collapse: collapse;
+    border-left: 1px solid #b7b7b7;
+    border-right: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+.tbl2 tr td {
+    font-weight: normal !important;
+    padding: 5px;
+}
+
+#tblBalance tr.evenRow {
+    border-top: none;
+}
+.TitleCSS {
+    border-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-collapse: separate !important;
+    background: #1b2b54;
+}
+
+.TitleCSS tr td {
+    padding: 5px;
+    font-weight: 600;
+}
+
+.TitleCSS .TitleCSS-subhd td {
+    padding-bottom: 0px;
+}
+
+.TitleCSS .TitleCSS-subhd1 td {
+    font-weight: normal;
+    padding-top: 0px;
+}
+
+.secondrow {
+    table-layout:fixed;
+}
+
+.secondrow tr td:first-child {
+    padding-left: 5px
+}
+
+.TitleCSS tr td:first-child {
+    padding-left: 5px
+}
+
+#tblBalance {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+    #tblBalance .evenRow td, #tblBalance .oddRow td {
+        border-top: 0px;
+    }
+
+#tblTotalPatArRecord {
+    border: 1px solid #FFC107;
+    background-color: #FFE495;
+    border-radius: 4px;
+    border-collapse: separate !important;
+    margin-bottom: 15px;
+}
+
+.TotalTextCSS {
+    width: 72% !important;
+    text-align: right;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.TotalTextCol {
+    width: 7% !important;
+    padding: 5px;
+}
+
+.col1 {
+    width: 7% !important;
+}
+
+.col2 {
+    width: 22% !important;
+}
+
+.col3 {
+    width: 10% !important;
+}
+
+.col4 {
+    width: 11% !important;
+}
+
+.col5 {
+    width: 22% !important;
+}
+
+.col6 {
+    width: 7% !important;
+}
+
+.col7 {
+    width: 7% !important;
+}
+
+.col8 {
+    width: 7% !important;
+}
+
+.col9 {
+    width: 7% !important;
+}
+
+.labelErr {
+    display: inline-block;
+    color: White;
+    background-color: Red;
+    border-width: 1px !important;
+    height: 25px !important;
+    padding-top: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    font-weight: 600
+}
+
+.Patar-Main {
+    margin: -8px 10px 10px 10px !important;
+    width: calc(100% - 20px);
+}
+
+.emptypatARcell {
+    background-color: #b7b7b7 !important;
+    height: 1px !important;
+    padding: 0px !important;
+}
+
+tr td.emptypatARcell:last-child {
+    background: white !important;
+}
+
+tr.evenRow + tr td.emptypatARcell:last-child {
+    background: #f5f5f5 !important;
+}
+
+.selectPatAR {
+    font-size: 12px;
+    width: 200px;
+}
+
+.Button-Update-Old-Yellow {
+    font-size: 8pt;
+    background-color: #FFC107 !important;
+}
+
+.particalPayPanel {
+    background: #EBEAEA;
+    border: 1px solid #707070;
+    padding: 15px 30px;
+    border-radius: 4px;
+    margin: 15px;
+}
+    .particalPayPanel input[type="checkbox"] {
+        vertical-align: middle;
+        margin-top: 0px;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 2px;
+    }
+
+.particalPayPanel label {
+    vertical-align: middle;
+    margin: 0px 5px;
+    font-weight: 400;
+}
+
+.particalPayPanel img {
+    vertical-align: middle;
+    margin: 0px 0px;
+}
+
+/* Custom Checkbox start */
+.checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #FFF;
+    border: 2px solid #959595;
+    border-radius: 4px;
+}
+
+.checkbox input:checked ~ .checkmark {
+    background-color: #2FCC40;
+    border: 1px solid #2FCC40;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Custom Checkbox end */
+
+
+/* Page Header Begins */
+
+.page_header {
+    background: #1b2b54;
+    color: #fff;
+    height: 30px;
+    border-bottom: 2px solid #2fcc40;
+    margin-bottom: 10px;
+    display: table;
+    width: 100%;
+}
+
+    .page_header .pagehdr_title {
+        font-size: 14px;
+        font-family: 'Open Sans', Arial, helvetica, Sans-serif;
+        display: table-cell;
+        padding-left: 10px;
+        line-height: 30px;
+    }
+
+    .page_header .pagehdr_cta {
+        display: table-cell;
+        text-align: right;
+        padding-right: 8px;
+    }
+
+    .page_header .ui-btn {
+        margin-left: 8px;
+    }
+
+/* Page Header Ends */
+
+.notesPanelBg {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    height: 280px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.demographicGrid {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0px;
+    padding: 5px;
+    background: #f5f5f5;
+    font-size: 12px !important;
+    font-family: 'Open Sans', Arial, helvetica, Sans-serif !important;
+}
+
+    .demographicGrid .DataGrid, .demographicGrid .dataGridClass tr:hover {
+        background: #f5f5f5;
+    }
+
+    .demographicGrid td {
+        font-size: 12px !important;
+        font-family: 'Open Sans', Arial, helvetica, Sans-serif !important;
+        color: #000;
+        font-weight: 600;
+    }
+
+.Patar-Main td {
+    font-size: 12px !important;
+    font-family: 'Open Sans', Arial, helvetica, Sans-serif !important;
+    color: #000;
+}
+
+
+/* Popup alert start */
+
+.overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.confirmPopupWrap {
+    width: 350px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #959595;
+    background: #f5f5f5;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'Open Sans', Arial, helvetica, Sans-serif;
+}
+
+    .confirmPopupWrap .header {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        background: #1b2b54;
+        color: #fff;
+        font-size: 14px;
+        height: 40px;
+        padding: 10px;
+        border-bottom: 2px solid #2fcc40;
+        position: relative;
+    }
+
+        .confirmPopupWrap .header .closes {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+            .confirmPopupWrap .header .closes .material-icons {
+                font-size: 16px;
+                color: #afb5c3;
+            }
+
+    .confirmPopupWrap .body {
+        padding: 20px 10px;
+        font-size: 12px;
+    }
+
+    .confirmPopupWrap .confirmFooter {
+        text-align: right;
+        padding: 10px;
+        border-top: 1px solid #959595;
+        position: relative;
+    }
+
+/* Popup alert end */
+
+.yellowToast {
+    background: #FFE495;
+    border: 1px solid #FFC107;
+    font-size: 12px !important;
+    border-radius: 4px !important;
+    overflow: hidden;
+    border-collapse: separate;
+    margin-left: 0px;
+}
+
+.Patar-Main td.notesHeading {
+    text-align: left;
+    font-size: 14px !important;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+}
+
+.selectActionDate{
+    width: 120px;
+}
+
+.selectPayerList{
+    min-width:270px;
+}
+
+.selectNotesType {
+    width: 106px;
+}
+
+.selectAdjustmentsType {
+    width: 287px;
+}
+
+.selectTransferTo {
+    width: 267px;
+}
+
+.selectTransferReason {
+    width: 167px;
+}
+
+.noteLabel {
+    margin-bottom: 3px;
+    display: block;
+}
+
+/* Custom dropdown start */
+.customselect {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #acacac;
+    height: 24px;
+    background: #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.select {
+    outline:none;
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    top: -2px;
+    height: 24px;
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    color: #666;
+    background: transparent;
+    padding: 5px 20px 5px 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color 0.3s ease;
+}
+    /* For IE <= 11 */
+    select.select::-ms-expand {
+        display: none;
+    }
+
+    select.select:hover,
+    select.select:focus {
+        color: #000;
+    }
+
+.select-icon {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    height: 22px;
+    border-radius: 3px;
+    display: inline-block;
+    /* background: #ccc;*/
+    line-height: 22px;
+}
+
+    .select-icon .material-icons {
+        transition: color 0.3s ease;
+        color: #333;
+    }
+
+/*select:hover ~ .select-icon,
+select:focus ~ .select-icon {
+    background: #ccc;
+}*/
+
+select:focus::-ms-value {
+    background-color: transparent;
+    color: #666;
+}
+
+/* Custom dropdown end*/
+
+.Patar-Main td #tblCCReserve td {
+    color: #fff;
+}
+
+.Patar-Main :focus, .confirmPopupWrap :focus {
+    box-shadow: 0px 0px 3px blue !important;
+    border: #333 1px solid !important;
+}
+
+.Patar-Main td:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.labelErrWrap {
+    position: absolute;
+    left: 0px;
+}
+
+.topPatAr {
+    white-space: nowrap;
+    display: block;
+    position:relative;
+}
+
+.labelErrWrap .labelErr {
+    background-color: #f44336;
+    border: 1px solid #c3362c;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 15px;
+}

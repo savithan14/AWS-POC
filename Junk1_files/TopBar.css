@@ -1,0 +1,56 @@
+.TopBarItem
+{
+	padding-left: 8px;
+}
+.TopBarItem a
+{
+    color: #888888;
+	padding-left: 5px; 
+    text-decoration: none
+}
+.TopBarItem a:hover
+{
+	color: #000099;
+	height: auto;
+	width: 200px; 
+	background-color: #ccccff;
+	text-decoration: none;
+}
+.TopBarMenu
+{ padding-right: 5px; 
+	border-top: #000099 1px solid;
+	padding-left: 5px; 
+	left: 180px; 
+	visibility: hidden; 
+	padding-bottom: 2px; 
+	overflow: visible; 
+	border-left: #000099; 
+	width: 200px; 
+	color: #00ffff; 
+	line-height: 16px; 
+	padding-top: 2px;
+	border-bottom: #000099 2px solid; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	position: absolute; 
+	background-color: navy;
+}
+
+.TopBarMenu a
+{
+	color: #ccccff;
+	text-decoration: none;
+}
+.TopBarMenu a:hover
+{
+	width: 100%;
+	color: #000099;
+	height: auto;
+	background-color: #ccccff;
+	text-decoration: none;
+}
+@media print {
+.TopBar
+{
+    display: none;
+}
+}
